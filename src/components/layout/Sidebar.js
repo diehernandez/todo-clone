@@ -1,13 +1,13 @@
-import React, {useState} from 'react'; 
-import { 
-    FaChevronDown, 
+import React, {useState} from 'react';
+import {
+    FaChevronDown,
     FaInbox,
     FaRegCalendarAlt,
-    FaRegCalendar,    
-} from 'react-icons/fa' ; 
+    FaRegCalendar,
+} from 'react-icons/fa' ;
 import { useSelectedProjectValue } from '../../context';
 import { Projects } from '../Projects';
-
+import { AddProject } from '../AddProject'
 export const Sidebar = () => {
 
     const { setSelectedProject } = useSelectedProjectValue();
@@ -16,9 +16,9 @@ export const Sidebar = () => {
 
     return (
         <div className="sidebar" data-testid="sidebar">
-            <ul className="sidebar__generic"> 
-                <li 
-                    data-testid="inbox" 
+            <ul className="sidebar__generic">
+                <li
+                    data-testid="inbox"
                     className={active === 'inbox' ? 'active' : undefined }
                     onClick={() => {
                         setActive('inbox');
@@ -31,8 +31,8 @@ export const Sidebar = () => {
                     </span>
                     <span>Inbox</span>
                 </li>
-                <li 
-                 data-testid="today" 
+                <li
+                 data-testid="today"
                  className={active === 'today' ? 'active' : undefined }
                  onClick={() => {
                      setActive('today');
@@ -44,8 +44,8 @@ export const Sidebar = () => {
                     </span>
                     <span>Today</span>
                 </li>
-                <li 
-                 data-testid="next_7" 
+                <li
+                 data-testid="next_7"
                  className={active === 'next_7' ? 'active' : undefined }
                  onClick={() => {
                      setActive('next_7');
@@ -57,20 +57,20 @@ export const Sidebar = () => {
                     <span>Next 7 days</span>
                 </li>
             </ul>
-            <div 
+            <div
                 className="sidebar__middle"
                 onClick={()=> setShowProjects(!showProjects)}
                 >
                 <span>
                     <FaChevronDown
-                    className={!showProjects ? 'hidden-projects' : undefined}  
+                    className={!showProjects ? 'hidden-projects' : undefined}
                     />
                 </span>
-              <h2>Projects</h2>  
+              <h2>Projects</h2>
             </div>
             <ul className="sidebar__projects" >{showProjects && <Projects/>}</ul>
-            
-            {/* {showProjects && <AddProject/>} */}
+
+            {showProjects && <AddProject/>}
 
         </div>
     )

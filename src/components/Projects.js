@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { IndividualProject } from './IndividualProject';
 
@@ -6,8 +6,8 @@ import { IndividualProject } from './IndividualProject';
 export const Projects = ( {activeValue = null }) => {
     const [active, setActive] = useState(activeValue);
     const { setSelectedProject } =useSelectedProjectValue();
-    const { projects } = useProjectsValue(); 
-    //console.log(projects);
+    const { projects } = useProjectsValue();
+
     return (
         projects &&
         projects.map(project => (
@@ -20,6 +20,10 @@ export const Projects = ( {activeValue = null }) => {
                     ? 'active sidebar__project'
                     : 'sidebar__project'
                 }
+              >
+                <div
+                  role="button"
+                  tabIndex={0}
 
                 onKeyDown={() => {
                     setActive(project.projectId);
@@ -31,7 +35,8 @@ export const Projects = ( {activeValue = null }) => {
                 }}
                 >
                     <IndividualProject project={project}/>
-                </li>
-        ))    
+                </div>
+              </li>
+        ))
     );
 };
