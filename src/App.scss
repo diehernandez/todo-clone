@@ -242,11 +242,6 @@
         padding: 5px 0;
         cursor: pointer;
 
-        div:nth-child(1){
-          width: 100%;
-          display: flex;
-          align-items:center;
-        }
         &-delete {
             margin-left: auto;
             display: none;
@@ -255,6 +250,7 @@
                 color: #cacaca;
             }
         }
+
         &.active, &:hover {
             font-weight: bold;
             background-color: white;

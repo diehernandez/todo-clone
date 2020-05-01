@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { Checkbox } from './Checkbox';
 import { useTask } from '../../hooks';
 import { collatedTasks } from '../../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../../helpers';
 import { useSelectedProjectValue, useProjectsValue } from '../../context';
 import { AddTask } from '../AddTask';
+import { Task } from './Task';
+import { Checkbox } from './Checkbox';
 export const Tasks = () => {
     const { selectedProject } = useSelectedProjectValue();
     const { projects } = useProjectsValue();
@@ -36,10 +37,11 @@ export const Tasks = () => {
             <AddTask/>
             <ul className="tasks__list">
                 {tasks.map(task => (
-                    <li key={`${task.id}`}>
-                    <Checkbox id={task.id}/>
-                    <span>{task.task}</span>
-                    </li>
+                  <li key={`${task.id}`}>
+                      <Checkbox id={task.id} archive={task.archive}/>
+                      <Task  id={task.id} name={task.task}/>
+                  </li>
+
                 ))}
             </ul>
         </div>
